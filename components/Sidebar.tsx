@@ -88,7 +88,7 @@ export function MobileSidebar() {
                           : "sidebarItem"
                     })}
                     onClick={() => setOpen(false)}>
-                    >
+
                     <route.icon size={20} />
                     {route.label}
                   </Link>
