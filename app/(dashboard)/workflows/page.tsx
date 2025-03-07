@@ -4,6 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { AlertCircle, InboxIcon } from "lucide-react";
 import React, { Suspense } from "react";
 import CreateWorkflowDialog from "./_components/CreateWorkflowDialog";
+import WorkflowCard from "./_components/WorkflowCard";
 
 function Workflows() {
   return (
@@ -13,6 +14,7 @@ function Workflows() {
           <h1 className="text-3xl font-bold">Workflows</h1>
           <p className="text-muted-foreground">Manage your workflows</p>
         </div>
+        <CreateWorkflowDialog />
       </div>
 
       <div className="h-full py-6">
@@ -65,7 +67,13 @@ async function UserWorkFlows() {
       </div>
     );
   }
-  return <div></div>;
+  return (
+    <div className="grid grid-cols-1 gap-4">
+      {workflows.map((workflow) => (
+        <WorkflowCard key={workflows.id} workflow={workflow} />
+      ))}
+    </div>
+  );
 }
 
 export default Workflows;
