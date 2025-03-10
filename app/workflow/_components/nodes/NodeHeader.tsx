@@ -25,33 +25,34 @@ function NodeHeader({ taskType, nodeId }: { taskType: TaskType; nodeId: string; 
           {task.isEntryPoint && <Badge>Entry point</Badge>}
           <Badge className="gap-2 flex items-center text-xs">
             <CoinsIcon size={16} />
-            Todo
+            {task.credits}
           </Badge>
           {!task.isEntryPoint && (
             <>
-                          <Button
-                              variant={"ghost"}
-                              size={"icon"}
-                              onClick={() => deleteElements({
-                                  nodes: [{id: nodeId}]
-                })}>
+              <Button
+                variant={"ghost"}
+                size={"icon"}
+                onClick={() =>
+                  deleteElements({
+                    nodes: [{ id: nodeId }]
+                  })
+                }>
                 <TrashIcon size={12} />
               </Button>
-                          <Button
-                              variant={"ghost"}
-                              size={"icon"}
-                              onClick={() => {
-                                  const node = getNode(nodeId) as AppNode
-                                  const newX = node.position.x;
-                                  const newY = node.position.y + node.measured?.height! + 20;
-                                  const newNode = CreateFlowNode(node.data.type, {
-                                      x: newX,
-                                      y: newY
-                                  });
+              <Button
+                variant={"ghost"}
+                size={"icon"}
+                onClick={() => {
+                  const node = getNode(nodeId) as AppNode;
+                  const newX = node.position.x;
+                  const newY = node.position.y + node.measured?.height! + 20;
+                  const newNode = CreateFlowNode(node.data.type, {
+                    x: newX,
+                    y: newY
+                  });
 
-                                  addNodes([newNode])
-                              }}
-                          >
+                  addNodes([newNode]);
+                }}>
                 <CopyIcon size={12} />
               </Button>
             </>

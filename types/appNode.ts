@@ -3,7 +3,7 @@ import { TaskParam, TaskType } from "./task";
 
 export interface AppNodeData {
   type: TaskType;
-  input: Record<string, string>;
+  inputs: Record<string, string>;
   [key: string]: any;
 }
 
@@ -17,3 +17,8 @@ export interface ParamProps {
   updateNodeParamValue: (newValue: string) => void;
   disabled?: boolean;
 }
+
+export type AppNodeMissingInputs = {
+  nodeId: string;
+  inputs: string[];
+};
