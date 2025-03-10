@@ -27,7 +27,7 @@ function SaveBtn({workflowId}: {workflowId: string}) {
           className="flex items-center gap-2"
           onClick={() => {
               const workflowDefination = JSON.stringify(toObject())
-              toast.loading("Saving workflow...")
+              toast.loading("Saving workflow...", { id: "save-workflow" });
               saveMutation.mutate({
                   id: workflowId,
                   defination: workflowDefination
