@@ -53,8 +53,8 @@ export default function RootLayout({
           }}>
           <AppProviders>{children}</AppProviders>
         </ClerkProvider>
+        <Toaster richColors />
       </body>
-      <Toaster richColors />
     </html>
   );
 }

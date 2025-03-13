@@ -1,7 +1,10 @@
 "use server";
 
 import prisma from "@/lib/primsa";
-import { createWorkflowSchema, createWorkflowSchemaType } from "@/schema/workflow";
+import {
+  createWorkflowSchema,
+  createWorkflowSchemaType
+} from "@/schema/workflow";
 import { WorkflowStatus } from "@/types/workflow";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -34,6 +37,7 @@ export async function CreateWorkflow(form: createWorkflowSchemaType) {
       userId,
       status: WorkflowStatus.DRAFT,
       defination: JSON.stringify(initalFlow),
+      lastRunAt: new Date(),
       ...data
     }
   });

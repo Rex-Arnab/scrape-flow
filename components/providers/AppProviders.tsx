@@ -16,7 +16,7 @@ export function AppProviders({
       <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
       </NextThemesProvider>
-      <ReactQueryDevtools />
+      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );
 }
