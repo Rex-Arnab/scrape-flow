@@ -16,17 +16,19 @@ model Workflow {
   name        String
   description String?
 
-  defination String
-  status     String
+  defination    String
+  executionPlan String?
+  creditsCost   Int     @default(0)
+  status        String
 
   lastRunAt     DateTime?
   lastRunId     String?
   lastRunStatus String?
 
-  executionPlan WorkflowExecution[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  executions WorkflowExecution[]
 
   // User cannot have two workflows with the same name
   @@unique([name, userId])

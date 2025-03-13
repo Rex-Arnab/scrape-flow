@@ -9,6 +9,8 @@ export async function GetAvailableCredits() {
     throw new Error("unauthenticated");
   }
 
+  console.log("userId:", userId);
+
   const balance = await prisma.userBalance.findUnique({
     where: { userId }
   });
