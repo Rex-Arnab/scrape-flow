@@ -9,6 +9,7 @@ export async function PageToHtmlExecutor(
     environment.setOutput("Html", html);
     return true;
   } catch (err: any) {
+    environment.log.error(err.meesage);
     console.error(err);
     return false;
   }
