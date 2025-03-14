@@ -3,16 +3,16 @@
 import prisma from "@/lib/primsa";
 import { auth } from "@clerk/nextjs/server";
 
-export async function GetAvailableCredits() {
+export async function GetUserPurchaseHistory() {
   const { userId } = auth();
   if (!userId) {
     throw new Error("unauthenticated");
   }
 
-  const balance = await prisma.userBalance.findUnique({
-    where: { userId }
+  return prisma.userPurchase.findMany({
+    where: { userId },
+    orderBy: {
+      date: "asc"
+    }
   });
-
-  if (!balance) return -1;
-  return balance.credits;
 }
