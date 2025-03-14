@@ -1,11 +1,12 @@
 "use client";
 
 import { TaskParam, TaskParamType } from "@/types/task";
-import React, { useCallback } from 'react'
+import React, { useCallback } from "react";
 import StringParam from "./param/StringParam";
 import { useReactFlow } from "@xyflow/react";
 import { AppNode } from "@/types/appNode";
 import BrowserInstanceParam from "./param/BrowserInstanceParam";
+import SelectParam from "./param/SelectParam";
 
 function NodeParamField({
   param,
@@ -14,7 +15,7 @@ function NodeParamField({
 }: {
   param: TaskParam;
   nodeId: string;
-    disabled: boolean;
+  disabled: boolean;
 }) {
   const { updateNodeData, getNode } = useReactFlow();
   const node = getNode(nodeId) as AppNode;
@@ -49,6 +50,15 @@ function NodeParamField({
           updateNodeParamValue={updateNodeParamValue}
         />
       );
+    case TaskParamType.SELECT:
+      return (
+        <SelectParam
+          param={param}
+          value={value}
+          updateNodeParamValue={updateNodeParamValue}
+          disabled={disabled}
+        />
+      );
     default:
       return (
         <div className="w-full">
@@ -58,4 +68,4 @@ function NodeParamField({
   }
 }
 
-export default NodeParamField
+export default NodeParamField;

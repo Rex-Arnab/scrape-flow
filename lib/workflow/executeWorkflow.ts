@@ -208,7 +208,7 @@ async function finalizePhase(
       logs: {
         createMany: {
           data: logCollector.getAll().map((log) => ({
-            message: log.message,
+            message: log.message ?? "--",
             timestamp: log.timestamp,
             logLevel: log.level
           }))
@@ -226,6 +226,7 @@ async function executePhase(
 ): Promise<boolean> {
   const runFn = ExecutorRegistry[node.data.type];
   if (!runFn) {
+    logCollector.error(`not found executor for ${node.data.type}`);
     return false;
   }
 
