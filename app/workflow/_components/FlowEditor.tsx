@@ -166,4 +166,4 @@ function FlowEditor({ workflow }: { workflow: Workflow }) {
   );
 }
 
-export default FlowEditor
+export default FlowEditor;

@@ -1,12 +1,13 @@
 "use client";
 
 import { Workflow } from "@prisma/client";
-import React from 'react'
-import {ReactFlowProvider} from "@xyflow/react"
+import React from "react";
+import { ReactFlowProvider } from "@xyflow/react";
 import FlowEditor from "./FlowEditor";
 import Topbar from "./topbar/Topbar";
 import TaskMenu from "./TaskMenu";
 import { FlowValidationContextProvider } from "@/components/context/FlowValidationContext";
+import { WorkflowStatus } from "@/types/workflow";
 
 function Editor({ workflow }: { workflow: Workflow }) {
   return (
@@ -17,6 +18,7 @@ function Editor({ workflow }: { workflow: Workflow }) {
             title="Workflow Editor"
             subtitle={workflow.name}
             workflowId={workflow.id}
+            isPublished={workflow.status === WorkflowStatus.PUBLISHED}
           />
           <section className="flex h-full overflow-auto">
             <TaskMenu />
@@ -28,4 +30,4 @@ function Editor({ workflow }: { workflow: Workflow }) {
   );
 }
 
-export default Editor
+export default Editor;
