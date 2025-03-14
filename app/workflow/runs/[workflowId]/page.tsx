@@ -2,7 +2,6 @@ import { GetWorkflowExections } from "@/actions/workflows/getWorkflowExecutions"
 import Topbar from "../../_components/topbar/Topbar";
 import { Suspense } from "react";
 import { InboxIcon, Loader2Icon } from "lucide-react";
-import { waitFor } from "@/lib/helper/waitFor";
 import ExecutionsTable from "./_components/ExecutionsTable";
 
 export default function ExecutionsPage({

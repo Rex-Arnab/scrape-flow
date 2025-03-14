@@ -6,7 +6,7 @@ import {
   MenuIcon,
   ShieldCheckIcon
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { Button, buttonVariants } from "./ui/button";
@@ -39,10 +39,6 @@ const routes = [
 
 function DesktopSidebar() {
   const pathname = usePathname();
-  const activeRoute =
-    routes.find(
-      (route) => route.href.length > 0 && pathname.includes(route.href)
-    ) || routes[0];
   return (
     <div className="hidden relative md:block min-w-[280px] max-w-[280px] h-screen overflow-hidden w-full bg-primary/5 dark:bg-secondary/30 dark:text-foreground text-muted-foreground border-r-2 border-separate">
       <div className="flex items-center justify-center gap-2 border-b-[1px] border-separate p-4">
@@ -58,9 +54,7 @@ function DesktopSidebar() {
             href={route.href}
             className={buttonVariants({
               variant:
-                activeRoute.href === route.href
-                  ? "sidebarActiveItem"
-                  : "sidebarItem"
+                pathname === route.href ? "sidebarActiveItem" : "sidebarItem"
             })}>
             <route.icon size={20} />
             {route.label}
@@ -74,10 +68,6 @@ function DesktopSidebar() {
 export function MobileSidebar() {
   const [isOpen, setOpen] = useState(false);
   const pathname = usePathname();
-  const activeRoute =
-    routes.find(
-      (route) => route.href.length > 0 && pathname.includes(route.href)
-    ) || routes[0];
 
   return (
     <div className="block border-separate bg-background md:hidden">
@@ -100,7 +90,7 @@ export function MobileSidebar() {
                   href={route.href}
                   className={buttonVariants({
                     variant:
-                      activeRoute.href === route.href
+                      pathname === route.href
                         ? "sidebarActiveItem"
                         : "sidebarItem"
                   })}
