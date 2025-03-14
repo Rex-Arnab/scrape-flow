@@ -281,7 +281,7 @@ function ParameterViewer({
                   <Textarea
                     readOnly
                     className="flex-1 basis-2/3"
-                    value={String(value)}
+                    value={key === "Credentials" ? "******" : String(value)}
                     cols={10}
                     rows={10}
                   />
@@ -289,7 +289,7 @@ function ParameterViewer({
                   <Input
                     readOnly
                     className="flex-1 basis-2/3"
-                    value={String(value)}
+                    value={key === "Credentials" ? "******" : String(value)}
                   />
                 )}
               </div>
