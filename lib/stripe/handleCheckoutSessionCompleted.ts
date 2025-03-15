@@ -9,6 +9,8 @@ export async function HandleCheckoutSessionCompleted(
   if (!event.metadata) {
     throw new Error("missing metadata");
   }
+
+  const { customer } = event;
   const { userId, packId } = event.metadata;
   if (!userId) {
     throw new Error("missing user id");
@@ -43,7 +45,8 @@ export async function HandleCheckoutSessionCompleted(
       stripeId: event.id,
       description: `${purchasedPack.name} - ${purchasedPack.credits}`,
       amount: event.amount_total!,
-      currency: event.currency!
+      currency: event.currency!,
+      customerId: customer
     }
   });
 }

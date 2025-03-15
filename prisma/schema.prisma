@@ -107,4 +107,5 @@ model UserPurchase {
   amount      Int
   currency    String
   date        DateTime @default(now())
+  customerId  String?
 }
