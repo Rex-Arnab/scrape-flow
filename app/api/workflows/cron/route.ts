@@ -9,7 +9,9 @@ export async function GET(req: Request) {
     where: {
       status: WorkflowStatus.PUBLISHED,
       cron: { not: null },
-      nextRunAt: { lte: now }
+      nextRunAt: {
+        lte: now
+      }
     }
   });
 
