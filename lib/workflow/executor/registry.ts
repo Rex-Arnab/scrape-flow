@@ -13,6 +13,9 @@ import { ReadDataFromJsonExecutor } from "./ReadPropertyFromJsonExecutor";
 import { AddPropertyToJsonExecutor } from "./AddPropertyToJsonExecutor";
 import { NavigateUrlExecutor } from "./NavigateUrlExecutor";
 import { ScrollToElementExecutor } from "./ScrollToElementExecutor";
+import { APIExecutor } from "./APIExecutor";
+import { ExtractAttributeFromElementExecutor } from "./ExtractAttributeFromElementExecutor";
+import { DelayExecutor } from "./Delay";
 
 type ExecutorFn<T extends WorkflowTask> = (
   environment: ExecutionEnvironment<T>
@@ -34,5 +37,8 @@ export const ExecutorRegistry: RegistryType = {
   READ_PROPERTY_FROM_JSON: ReadDataFromJsonExecutor,
   ADD_PROPERTY_TO_JSON: AddPropertyToJsonExecutor,
   NAVIGATE_URL: NavigateUrlExecutor,
-  SCROLL_TO_ELEMENT: ScrollToElementExecutor
+  SCROLL_TO_ELEMENT: ScrollToElementExecutor,
+  API_TASK: APIExecutor,
+  EXTRACT_ATTRIBUTE_FROM_ELEMENT: ExtractAttributeFromElementExecutor,
+  DELAY: DelayExecutor
 };

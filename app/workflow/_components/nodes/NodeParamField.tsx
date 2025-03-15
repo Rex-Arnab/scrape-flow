@@ -8,6 +8,7 @@ import { AppNode } from "@/types/appNode";
 import BrowserInstanceParam from "./param/BrowserInstanceParam";
 import SelectParam from "./param/SelectParam";
 import CredentialsParam from "./param/CredentialsParam";
+import NumberParam from "./param/NumberParam";
 
 function NodeParamField({
   param,
@@ -38,6 +39,15 @@ function NodeParamField({
     case TaskParamType.STRING:
       return (
         <StringParam
+          param={param}
+          value={value}
+          updateNodeParamValue={updateNodeParamValue}
+          disabled={disabled}
+        />
+      );
+    case TaskParamType.NUMBER:
+      return (
+        <NumberParam
           param={param}
           value={value}
           updateNodeParamValue={updateNodeParamValue}

@@ -22,7 +22,8 @@ export const ExtractDataWithAITask = {
       name: "Prompt",
       type: TaskParamType.STRING,
       required: true,
-      variant: "textarea"
+      variant: "textarea",
+      helperText: "We are using openai"
     }
   ] as const,
   outputs: [

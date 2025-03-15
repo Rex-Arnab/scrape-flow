@@ -1,25 +1,35 @@
 import { ExecutionEnvironment } from "@/types/executor";
-import { DeliverViaWebhookTask } from "../task/DeliverViaWebhook";
+import { APITask } from "../task/API";
 
-export async function DeliverViaWebhookExecutor(
-  environment: ExecutionEnvironment<typeof DeliverViaWebhookTask>
+export async function APIExecutor(
+  environment: ExecutionEnvironment<typeof APITask>
 ): Promise<boolean> {
   try {
     const targetUrl = environment.getInput("Target URL");
     if (!targetUrl) {
       environment.log.error("targetUrl not defined");
     }
+    const method = environment.getInput("Method");
+    if (!method) {
+      environment.log.error("method not defined");
+    }
     const body = environment.getInput("Body");
     if (!body) {
       environment.log.error("body not defined");
     }
+    const bodyType = environment.getInput("Body Type");
+    if (!bodyType) {
+      environment.log.error("bodyType not defined");
+    }
 
+    const reqBody =
+      bodyType.toUpperCase() === "TEXT" ? body : JSON.stringify(body);
     const resp = await fetch(targetUrl, {
-      method: "POST",
+      method,
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(body)
+      body: reqBody
     });
 
     const statusCode = resp.status;

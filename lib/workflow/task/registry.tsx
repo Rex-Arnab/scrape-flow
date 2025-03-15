@@ -12,6 +12,9 @@ import { ReadPropertyFromJsonTask } from "./ReadPropertyFromJson";
 import { AddPropertyToJsonTask } from "./AddPropertyToJson";
 import { NavigateUrlTask } from "./NavigateUrl";
 import { ScrollToElementTask } from "./ScrollToElement";
+import { APITask } from "./API";
+import { ExtractAttributeFromElementTask } from "./ExtractAttributeFromElement";
+import { DelayTask } from "./Delay";
 
 type Registry = {
   [K in TaskType]: WorkflowTask & { type: K };
@@ -29,5 +32,8 @@ export const TaskRegistry: Registry = {
   READ_PROPERTY_FROM_JSON: ReadPropertyFromJsonTask,
   ADD_PROPERTY_TO_JSON: AddPropertyToJsonTask,
   NAVIGATE_URL: NavigateUrlTask,
-  SCROLL_TO_ELEMENT: ScrollToElementTask
+  SCROLL_TO_ELEMENT: ScrollToElementTask,
+  API_TASK: APITask,
+  EXTRACT_ATTRIBUTE_FROM_ELEMENT: ExtractAttributeFromElementTask,
+  DELAY: DelayTask
 };
