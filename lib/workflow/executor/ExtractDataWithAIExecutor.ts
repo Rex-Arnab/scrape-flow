@@ -12,7 +12,7 @@ const DEV_MODE = process.env.DEV_MODE === "true";
 const BASE_URL = DEV_MODE
   ? process.env.DEV_MODE_API_URL
   : "https://api.openai.com/v1";
-const BASE_MODEL = DEV_MODE ? process.env.DEV_MODE_MODEL : "gpt-4o-mini";
+const BASE_MODEL = DEV_MODE ? process.env.DEV_MODE_MODEL! : "gpt-4o-mini";
 
 export async function ExtractDataWithAiExecutor(
   environment: ExecutionEnvironment<typeof ExtractDataWithAITask>
