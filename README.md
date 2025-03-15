@@ -57,3 +57,6 @@ Explore our rich collection of feature screenshots:
 - **Navigate to URL:** Directs the browser to load the specified web page.
 
 Flow Scrape is designed to streamline your web scraping needs with automation and flexibility. Enjoy building and managing your web scraping workflows with a modern, easy-to-use interface.
+
+NOTE: Only for Desktop Users
+Planning to work on Responsiveness Soon
