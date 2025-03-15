@@ -46,7 +46,7 @@ export async function HandleCheckoutSessionCompleted(
       description: `${purchasedPack.name} - ${purchasedPack.credits}`,
       amount: event.amount_total!,
       currency: event.currency!,
-      customerId: customer
+      customerId: customer as string
     }
   });
 }
